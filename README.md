@@ -33,10 +33,6 @@ SEARCH_KEYWORDS=Rydberg atom,Rydberg state,Rydberg excitation
 MAX_RESULTS=20
 ```
 
-**修改说明**：
-*   **改关键词**：直接修改 `SEARCH_KEYWORDS` 变量的值即可。关键词是论文摘要中出现的术语，逗号分隔表示“或”的关系。
-*   **`.env` 仅用于本地**：此文件**切勿上传到GitHub**。在云端运行时，邮箱信息需通过下一步的 Secrets 配置。
-
 ### 第二步：配置 GitHub Secrets（用于云端运行邮箱设置）
 
 这是让 GitHub Actions 能安全发送邮件的关键步骤。
