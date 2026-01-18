@@ -2,7 +2,7 @@ name: Daily Arxiv Paper Digest
 on:
   schedule:
     # 每天UTC时间1点运行，即北京时间上午9点
-    - cron: '33 11 * * *'  # 修正cron表达式格式和时间
+    - cron: '0 1 * * *'  # 修正cron表达式格式和时间
   workflow_dispatch: # 允许手动触发
 
 jobs:
