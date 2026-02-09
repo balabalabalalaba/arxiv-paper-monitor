@@ -5,7 +5,8 @@ from datetime import datetime
 import logging
 
 from config import Config
-from arxiv_fetcher import ArxivFetcher
+from unified_fetcher import UnifiedPaperFetcher
+#from arxiv_fetcher import ArxivFetcher
 from email_sender import EmailSender
 
 # 配置日志
@@ -20,7 +21,8 @@ logger = logging.getLogger(__name__)
 
 class ArxivDailyDigest:
     def __init__(self):
-        self.fetcher = ArxivFetcher()
+        self.fetcher = UnifiedPaperFetcher()
+        #self.fetcher = ArxivFetcher()
         self.email_sender = EmailSender()
         
     def run(self, test_mode=False):
@@ -31,7 +33,8 @@ class ArxivDailyDigest:
         try:
             # 1. 获取论文
             days_back = 0 if test_mode else 1
-            papers = self.fetcher.fetch_recent_papers(days_back=days_back)
+            #papers = self.fetcher.fetch_recent_papers(days_back=days_back)
+            papers = self.fetcher.fetch_all(days_back=days_back)
             
             # 2. 生成摘要
             summaries = []
