@@ -9,7 +9,7 @@ class UnifiedPaperFetcher:
 
         all_papers = arxiv_papers + prl_papers
 
-        # 可选：基于 title 去重
+        # 基于 title 去重
         seen = set()
         unique = []
         for p in all_papers:
@@ -19,3 +19,6 @@ class UnifiedPaperFetcher:
                 unique.append(p)
 
         return unique
+
+    def generate_summary(self, paper):
+        return self.arxiv.generate_summary(paper)
