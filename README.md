@@ -32,11 +32,12 @@
 
 | Name | 说明 | 示例值 |
 |------|------|--------|
-| `SEARCH_KEYWORDS` | 搜索关键词，英文逗号分隔 | `量子计算,超导,机器学习` |
+| `SEARCH_KEYWORDS` | 搜索关键词，英文逗号分隔 | `quantum computing,superconductivity` |
+| `SEARCH_CATEGORIES` | 只在指定 arXiv 分区搜索，逗号分隔，**留空表示不限制** | `physics.atom-ph,quant-ph,physics.optics` |
 | `FETCH_DAYS` | 查找过去几天的论文（默认 2） | `2` |
 | `MAX_RESULTS` | 每次最多返回几篇论文（默认 20） | `20` |
 
-> **提示**：`SEARCH_KEYWORDS` 请用英文关键词，arXiv 为英文数据库。例如：`quantum computing, superconductivity, machine learning`
+> **提示**：`SEARCH_KEYWORDS` 请用英文关键词，arXiv 为英文数据库。常用分区代码：`quant-ph`（量子物理）、`physics.atom-ph`（原子物理）、`physics.optics`（光学）、`cond-mat`（凝聚态）、`cs.AI`（人工智能）。完整列表见 [arxiv.org/category_taxonomy](https://arxiv.org/category_taxonomy)。
 
 ### 第三步：配置邮箱（GitHub Secrets）
 
@@ -136,6 +137,9 @@ A：进入 `Settings → Secrets and variables → Actions → Variables` 标签
 
 **Q：`FETCH_DAYS` 和 `MAX_RESULTS` 怎么设置？**
 A：同样在 GitHub Variables 里添加或修改对应的变量值。`FETCH_DAYS` 建议设为 `1`（只看昨天）或 `2`（看最近两天），`MAX_RESULTS` 设为 `20`~`50` 即可。
+
+**Q：如何只搜索特定 arXiv 分区？**
+A：在 GitHub Variables 里添加 `SEARCH_CATEGORIES`，填入分区代码（逗号分隔），例如 `physics.atom-ph,quant-ph,physics.optics`。不设置此变量则搜索全部分区。分区代码见 [arxiv.org/category_taxonomy](https://arxiv.org/category_taxonomy)。
 
 **Q：定时任务到点没有运行？**
 A：

@@ -32,4 +32,5 @@ jobs:
           FETCH_DAYS: ${{ vars.FETCH_DAYS || '2' }}
           MAX_RESULTS: ${{ vars.MAX_RESULTS || '20' }}
           SEARCH_KEYWORDS: ${{ vars.SEARCH_KEYWORDS || 'tweezer array, integrated photonics, tweezer arrays, arno rauschenbeutel, integrated photonic, nanofiber, casimir polder, FPGA' }}
+          SEARCH_CATEGORIES: ${{ vars.SEARCH_CATEGORIES || '' }}
         run: python main.py

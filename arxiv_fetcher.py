@@ -19,7 +19,13 @@ class ArxivFetcher:
             # 1. 基础关键词查询
             keyword_query = " OR ".join([f'all:"{kw.strip()}"' for kw in self.keywords])
             query = f"({keyword_query})"
-            
+
+            # 2. 分区过滤
+            categories = getattr(Config, 'SEARCH_CATEGORIES', [])
+            if categories:
+                cat_query = " OR ".join([f"cat:{cat}" for cat in categories])
+                query += f" AND ({cat_query})"
+
             # === 新增：动态时间限制逻辑 ===
             if days_back > 0:
                 end_date = datetime.now()

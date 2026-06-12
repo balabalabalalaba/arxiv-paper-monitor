@@ -26,6 +26,13 @@ class Config:
         ]
         
     MAX_RESULTS = int(os.getenv("MAX_RESULTS", 50))
+
+    # arXiv 分区过滤，逗号分隔，留空表示不限制分区
+    _env_categories = os.getenv("SEARCH_CATEGORIES")
+    if _env_categories:
+        SEARCH_CATEGORIES = [cat.strip() for cat in _env_categories.split(",") if cat.strip()]
+    else:
+        SEARCH_CATEGORIES = []
     
     # 定时任务配置
     SCHEDULE_TIME = "09:00"  
